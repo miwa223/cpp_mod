@@ -1,19 +1,16 @@
 NAME = megaphone
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 #-MMD -MP
+CC = clang++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = megaphone.cpp
 OBJS = $(SRCS:.cpp=.o)
-INCDIR = -I../include
-LIBDIR =
-LIBS =
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBDIR)$(LIBS)
+	$(CC) $(CFLAGS) -o $@ $^
 
 $(OBJS): $(SRCS)
-	$(CC) $(CFLAGS) $(INCDIR) -c $(SRCS)
+	$(CC) $(CFLAGS) -c $(SRCS)
 
 clean:
 	rm -f $(OBJS) *.d
