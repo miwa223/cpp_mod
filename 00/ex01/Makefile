@@ -1,7 +1,7 @@
 NAME = phonebook
 CC = clang++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP #-g -fsanitize=address
-SRCS = main.cpp phonebook.cpp contact.cpp
+SRCS = main.cpp Phonebook.cpp Contact.cpp
 OBJS = $(SRCS:.cpp=.o)
 INCDIR = -I../include
 LIBDIR =
