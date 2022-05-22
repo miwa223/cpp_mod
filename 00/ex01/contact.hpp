@@ -6,25 +6,27 @@
 #include <string>
 #include <cctype> // std::isprint
 
-#define E_DIGITS "Only Digits acceptable. Try again."
-#define E_PRINTS "Only printable characters acceptable. Try again."
-
 class Contact
 {
 	private:
-		int			id;
-		std::string	first_name;
-		std::string	last_name;
-		std::string	nickname;
-		std::string	phone_number;
-		std::string	darkest_secret;
+		int							id;
+		std::string					first_name;
+		std::string					last_name;
+		std::string					nickname;
+		std::string					phone_number;
+		std::string					darkest_secret;
+		static const std::string	E_EMPTY;
+		static const std::string	E_DIGITS;
+		static const std::string	E_PRINTS;
+		static const std::string	E_ALNUMS;
+		bool	isDigits(std::string &num) const;
+		bool	isPrints(std::string &str) const;
+		bool	isAlnums(std::string &str) const;
+		bool	validateInput(int i, std::string &content) const;
 	public:
 		Contact();
 		~Contact();
-		void	inputContact(int index);
-		bool	isDigits(std::string &num);
-		bool	isPrints(std::string &str);
-		bool	isValidIndex(int index);
+		bool	inputContact(int index);
 		void	displaySummary();
 		void	displayContact();
 };

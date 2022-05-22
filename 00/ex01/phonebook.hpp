@@ -5,22 +5,23 @@
 #include <string>
 #include <sstream> // std::istringstream
 
-#define E_CMD "Invaild command."
-#define E_NOCONTACT "No contact found. Add a contact first."
-#define E_INDEX "Index not found. Try again."
-
 class Contact;
 
 class PhoneBook
 {
+	private:
+		Contact						*contacts[8];
+		int							nb_contacts;
+		static const std::string	E_NOCONTACT;
+		static const std::string	E_INDEX;
+		int		stoiNum(std::string &sindex);
 	public:
 		PhoneBook();
 		~PhoneBook();
-		void	add(int index);
-		void	search();
-		int		stoiNum(std::string &sindex);
-	private:
-		Contact	*contacts[8];
+		static const std::string	E_CMD;
+		static const std::string	E_EOF;
+		bool	add();
+		bool	search();
 };
 
 #endif

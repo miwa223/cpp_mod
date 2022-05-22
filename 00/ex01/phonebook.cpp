@@ -1,8 +1,14 @@
 #include "Phonebook.hpp"
 #include "Contact.hpp"
 
-PhoneBook::PhoneBook()
+const std::string PhoneBook::E_NOCONTACT = "No contact found. Add a contact first.";
+const std::string PhoneBook::E_INDEX = "Index not found. Try again.";
+const std::string PhoneBook::E_CMD = "Invalid command.";
+const std::string PhoneBook::E_EOF = "Exit by unexpected EOF";
+
+PhoneBook::PhoneBook() : nb_contacts(0)
 {
+	std::cout << ">> Welcome to our phonebook!\n" << std::endl;
 	for (int i = 0; i < 8; i++)
 		contacts[i] = NULL;
 }
@@ -11,34 +17,42 @@ PhoneBook::~PhoneBook()
 {
 	int	i = 0;
 
-	while (contacts[i])
+	while (i < 8 && contacts[i])
 		delete contacts[i++];
+	std::cout << "\n>> Have a nice day!" << std::endl;
 }
 
-void	PhoneBook::add(int index)
+bool	PhoneBook::add()
 {
-	if (!contacts[index % 8])
-		contacts[index % 8] = new Contact();
-	contacts[index % 8]->inputContact(index);
+	if (contacts[nb_contacts])
+		delete contacts[nb_contacts];
+	contacts[nb_contacts] = new Contact();
+	if (!contacts[nb_contacts]->inputContact(nb_contacts))
+		return (false);
+	if (nb_contacts == 7)
+		nb_contacts = 0;
+	else
+		nb_contacts++;
+	return (true);
 }
 
 int		PhoneBook::stoiNum(std::string &sindex)
 {
-	int					num = 0;
 	std::istringstream	issindex(sindex);
+	int					num = 0;
+	size_t				i = 0;
 
-	for (size_t i = 0; i < sindex.length(); i++)
+	if (sindex[0] == '+')
+		i++;
+	if (sindex.length() == i + 1 && '0' <= sindex[i] && sindex[i] <= '7')
 	{
-		if (i == 0 && sindex[i] == '+' && sindex[i + 1])
-			continue;
-		if (std::isdigit(sindex[i]) == 0)
-			return (-1);
+		issindex >> num;
+		return (num);
 	}
-	issindex >> num;
-	return (num);
+	return (-1);
 }
 
-void	PhoneBook::search()
+bool	PhoneBook::search()
 {
 	int			i = 0;
 	int			index = 0;
@@ -46,22 +60,22 @@ void	PhoneBook::search()
 
 	if (!contacts[0])
 	{
-		std::cout << E_NOCONTACT << std::endl;
-		return ;
+		std::cerr << PhoneBook::E_NOCONTACT << std::endl;
+		return (true);
 	}
-	while (contacts[i])
+	while (i < 8 && contacts[i])
 		contacts[i++]->displaySummary();
 	while (1)
 	{
 		std::cout << "Type the index of the entry to display: ";
-		std::cin >> sindex;
-		if ((index = stoiNum(sindex)) == -1 || !contacts[index % 8]
-			|| !contacts[index % 8]->isValidIndex(index))
-			std::cout << E_INDEX << std::endl;
+		std::getline(std::cin, sindex);
+		if (std::cin.eof())
+			return (false);
+		if (sindex == "" || (index = stoiNum(sindex)) == -1 || !contacts[index])
+			std::cerr << E_INDEX << std::endl;
 		else
-		{
-			contacts[index % 8]->displayContact();
 			break ;
-		}
 	}
+	contacts[index]->displayContact();
+	return (true);
 }

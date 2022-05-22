@@ -1,25 +1,36 @@
 #include "Phonebook.hpp"
 
+bool	operateCmd(std::string &cmd, PhoneBook *phonebook)
+{
+	if (cmd != "ADD" && cmd != "SEARCH" && cmd != "EXIT" && cmd != "")
+		std::cerr << PhoneBook::E_CMD << std::endl;
+	else if ((cmd == "ADD" && !phonebook->add())
+		|| (cmd == "SEARCH" && !phonebook->search()))
+	{
+		std::cerr << PhoneBook::E_EOF << std::endl;
+		return (false);
+	}
+	else if (cmd == "EXIT")
+		return (false);
+	return (true);
+}
+
 int	main(void)
 {
-	int			i = 0;
+	PhoneBook	phonebook;
 	std::string	cmd;
-	PhoneBook	*phonebook;
 
-	phonebook = new PhoneBook();
 	while (1)
 	{
 		std::cout << "Type ADD, SEARCH or EXIT: ";
-		std::cin >> cmd;
-		if (cmd == "ADD")
-			phonebook->add(i++);
-		else if (cmd == "SEARCH")
-			phonebook->search();
-		else if (cmd == "EXIT")
+		std::getline(std::cin, cmd);
+		if (std::cin.eof())
+		{
+			std::cerr << PhoneBook::E_EOF << std::endl;
 			break ;
-		else
-			std::cout << E_CMD << std::endl;
+		}
+		if (!operateCmd(cmd, &phonebook))
+			break ;
 	}
-	delete phonebook;
 	return (0);
 }
