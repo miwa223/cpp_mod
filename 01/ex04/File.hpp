@@ -17,9 +17,13 @@ class File
 		bool		isValidOut(std::ofstream &ofs);
 		bool		isValidArg();
 	public:
-		File(char *argv[]);
+		File(std::string args[]);
 		~File();
 		void		replace();
 };
+
+void	Test_replace();
+void	compareFile(std::string filename, std::string s1, std::string s2);
+bool	isValidIn(std::ifstream &ifs, std::string filename);
 
 #endif

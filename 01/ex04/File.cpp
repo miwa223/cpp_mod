@@ -1,31 +1,24 @@
 #include "File.hpp"
 
-File::File(char *argv[])
+File::File(std::string args[])
 {
-	name_ = argv[1];
+	name_ = args[0];
 	name_new_ = name_ + ".replace";
-	s_original_ = argv[2];
-	s_new_ = argv[3];
+	s_original_ = args[1];
+	s_new_ = args[2];
 }
 
 File::~File() {}
 
-std::string	File::replaceLine(std::string line)
+bool	File::isValidArg()
 {
-	std::string				replaced = "";
-	size_t					begin = 0;
-	std::string::size_type	i = line.find(s_original_);
-
-	if (i == std::string::npos)
-		return (line);
-	while (i != std::string::npos)
+	if (!s_original_.empty())
+		return (true);
+	else
 	{
-		replaced += (line.substr(begin, i - begin) + s_new_);
-		begin = i + s_original_.length();
-		i = line.find(s_original_, i + s_original_.length());
+		std::cerr << "Invalid arguments" << std::endl;
+		return (false);
 	}
-	replaced += line.substr(begin);
-	return (replaced);
 }
 
 bool	File::isValidIn(std::ifstream &ifs)
@@ -50,15 +43,18 @@ bool	File::isValidOut(std::ofstream &ofs)
 	}
 }
 
-bool	File::isValidArg()
+std::string	File::replaceLine(std::string line)
 {
-	if (s_original_.length() > 0)
-		return (true);
-	else
+	size_t					begin = 0;
+	std::string::size_type	i;
+
+	while ((i = line.find(s_original_, begin)) != std::string::npos)
 	{
-		std::cerr << "Invalid arguments" << std::endl;
-		return (false);
+		line.erase(i, s_original_.length());
+		line.insert(i, s_new_);
+		begin = i + s_new_.length();
 	}
+	return (line);
 }
 
 void	File::replace()
@@ -67,23 +63,19 @@ void	File::replace()
 		return ;
 
 	std::ifstream	foriginal(name_);
-	std::ofstream	fnew(name_new_);
 	if (!isValidIn(foriginal))
 		return ;
+	std::ofstream	fnew(name_new_);
 	if (!isValidOut(fnew))
 		return ;
 
 	std::string		line;
 	while (std::getline(foriginal, line))
 	{
-		if (!isValidIn(foriginal))
-			return ;
-		if (line.length() == 0)
-			line += "\n";
-		line = replaceLine(line);
 		if (foriginal.eof())
-			fnew << line;
+			line = replaceLine(line);
 		else
-			fnew << line << std::endl;
+			line = replaceLine(line + "\n");
+		fnew << line;
 	}
 }
