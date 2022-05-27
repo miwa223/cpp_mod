@@ -1,5 +1,5 @@
 NAME = weapon
-CC = clang++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP
 SRCS = *.cpp
 OBJS = $(SRCS:.cpp=.o)
