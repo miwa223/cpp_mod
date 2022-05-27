@@ -6,6 +6,7 @@ int	main(void)
 	return (0);
 }
 
+// prerequisite: edit a file <filename>.expected as expected.
 void	Test_replace()
 {
 	compareFile("testfiles/normal", "hello", "11");
@@ -22,12 +23,12 @@ void	compareFile(std::string filename, std::string s1, std::string s2)
 	std::ifstream	f_replace(args[0] + ".replace");
 	if (!isValidIn(f_replace, args[0] + ".replace"))
 		return ;
-	std::ifstream	f(args[0] + ".expected");
-	if (!isValidIn(f, args[0] + ".expected"))
+	std::ifstream	f_exp(args[0] + ".expected");
+	if (!isValidIn(f_exp, args[0] + ".expected"))
 		return ;
 	std::string		actual;
 	std::string		expected;
-	while (std::getline(f_replace, actual) && std::getline(f, expected))
+	while (std::getline(f_replace, actual) && std::getline(f_exp, expected))
 	{
 		if (actual != expected)
 		{
