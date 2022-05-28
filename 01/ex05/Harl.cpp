@@ -6,13 +6,13 @@ Harl::~Harl() {}
 
 void	Harl::complain( std::string level )
 {
-	std::string	lvls[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	std::string	levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void		(Harl::*funcs[])(void) = {&Harl::debug, &Harl::info,
 											&Harl::warning, &Harl::error};
 
 	for (int i = 0; i < 4; i++)
 	{
-		if (lvls[i] == level)
+		if (levels[i] == level)
 		{
 			(this->*funcs[i])();
 			return ;

@@ -8,11 +8,11 @@ int	exitError(void)
 
 int	stoiLevel(std::string level)
 {
-	std::string	lvls[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	std::string	levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 	for (int i = 0; i < 4; i++)
 	{
-		if (lvls[i] == level)
+		if (levels[i] == level)
 			return (i);
 	}
 	return (-1);
@@ -20,7 +20,7 @@ int	stoiLevel(std::string level)
 
 void	harlFilter(Harl harl, int level)
 {
-	enum	e_lvls
+	enum	e_levels
 	{
 		DEBUG,
 		INFO,
@@ -50,7 +50,6 @@ void	harlFilter(Harl harl, int level)
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]"
 				<< std::endl;
-			break;
 	}
 }
 
@@ -59,9 +58,9 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 		return (exitError());
 
-	std::string	lvl = argv[1];
+	std::string	level = argv[1];
 	Harl		harl;
 
-	harlFilter(harl, stoiLevel(lvl));
+	harlFilter(harl, stoiLevel(level));
 	return (0);
 }
