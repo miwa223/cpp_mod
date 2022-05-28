@@ -36,7 +36,6 @@ void	compareFile(std::string filename, std::string s1, std::string s2)
 			std::cerr << "-" << expected << std::endl;
 		}
 	}
-	remove((args[0] + ".replace").c_str());
 }
 
 bool	isValidIn(std::ifstream &ifs, std::string filename)
