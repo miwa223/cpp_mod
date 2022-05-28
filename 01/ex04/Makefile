@@ -27,7 +27,6 @@ test_object/%.o: %.cpp
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	rm -f $(OBJS) $(TEST_OBJS)
 	@if [ -e object ]; then rm -r object ; fi
 	@if [ -e test_object ]; then rm -r test_object ; fi
 
@@ -36,4 +35,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test

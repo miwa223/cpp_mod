@@ -2,18 +2,21 @@ NAME = zombieHorde
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP
 SRCS = main.cpp Zombie.cpp zombieHorde.cpp
-OBJS = $(SRCS:.cpp=.o)
+OBJS = $(SRCS:%.cpp=object/%.o)
 
-all: $(NAME)
+all: dir $(NAME)
+
+dir:
+	@mkdir -p object
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-$(OBJS): $(SRCS)
-	$(CC) $(CFLAGS) -c $(SRCS)
+object/%.o: %.cpp
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	rm -f $(OBJS) *.d
+	@if [ -e object ]; then rm -r object ; fi
 
 fclean: clean
 	rm -f $(NAME)

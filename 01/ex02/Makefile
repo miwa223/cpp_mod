@@ -1,7 +1,7 @@
 NAME = brain
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP
-SRCS = *.cpp
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

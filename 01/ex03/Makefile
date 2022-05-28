@@ -1,19 +1,22 @@
 NAME = weapon
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP
-SRCS = *.cpp
-OBJS = $(SRCS:.cpp=.o)
+SRCS = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+OBJS = $(SRCS:%.cpp=object/%.o)
 
-all: $(NAME)
+all: dir $(NAME)
+
+dir:
+	@mkdir -p object
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-$(OBJS): $(SRCS)
-	$(CC) $(CFLAGS) -c $(SRCS)
+object/%.o: %.cpp
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	rm -f $(OBJS) *.d
+	@if [ -e object ]; then rm -r object ; fi
 
 fclean: clean
 	rm -f $(NAME)

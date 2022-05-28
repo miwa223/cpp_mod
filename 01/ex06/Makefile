@@ -4,9 +4,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP
 SRCS = main.cpp Harl.cpp
 OBJS = $(SRCS:%.cpp=object/%.o)
 
-all: dirs $(NAME)
+all: dir $(NAME)
 
-dirs:
+dir:
 	@mkdir -p object
 
 $(NAME): $(OBJS)
