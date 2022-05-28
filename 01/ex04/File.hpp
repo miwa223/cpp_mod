@@ -4,6 +4,8 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include <cstring> //std::strerror
+#include <cerrno>
 
 class File
 {

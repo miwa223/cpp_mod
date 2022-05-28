@@ -27,7 +27,7 @@ bool	File::isValidIn(std::ifstream &ifs)
 		return (true);
 	else
 	{
-		std::cerr << name_ << ": " << strerror(errno) << std::endl;
+		std::cerr << name_ << ": " << std::strerror(errno) << std::endl;
 		return (false);
 	}
 }
@@ -38,7 +38,7 @@ bool	File::isValidOut(std::ofstream &ofs)
 		return (true);
 	else
 	{
-		std::cerr << name_new_ << ": " << strerror(errno) << std::endl;
+		std::cerr << name_new_ << ": " << std::strerror(errno) << std::endl;
 		return (false);
 	}
 }
