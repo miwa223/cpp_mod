@@ -12,7 +12,7 @@ Fixed::Fixed(const int num)
 
 Fixed::Fixed(const float value)
 {
-	this->fp_num = std::roundf(value * 256);
+	this->fp_num = std::roundf(value * (1 << this->fractional_bits));
 }
 
 Fixed::Fixed(const Fixed &fixed)
@@ -78,7 +78,7 @@ Fixed			Fixed::operator*(const Fixed &fixed)
 {
 	Fixed	res;
 
-	res.fp_num = this->fp_num * fixed.fp_num >> fractional_bits;
+	res.fp_num = ((long long)this->fp_num * (long long)fixed.fp_num) >> fractional_bits;
 	return (res);
 }
 
@@ -86,6 +86,11 @@ Fixed			Fixed::operator/(const Fixed &fixed)
 {
 	Fixed	res;
 
+	if (fixed.fp_num == 0)
+	{
+		std::cerr << "Error: cannot divide by zero" << std::endl;
+		return (res);
+	}
 	res.fp_num = this->fp_num / fixed.fp_num << fractional_bits;
 	return (res);
 }
@@ -130,7 +135,7 @@ void			Fixed::setRawBits( int const raw )
 
 float			Fixed::toFloat( void ) const
 {
-	return ((float)(this->fp_num) / 256);
+	return ((float)(this->fp_num) / (1 << this->fractional_bits));
 }
 
 int				Fixed::toInt( void ) const
@@ -140,28 +145,28 @@ int				Fixed::toInt( void ) const
 
 Fixed			&Fixed::min(Fixed &fp1, Fixed &fp2)
 {
-	if (fp1 < fp2)
+	if (fp1 <= fp2)
 		return (fp1);
 	return (fp2);
 }
 
 const Fixed		&Fixed::min(const Fixed &fp1, const Fixed &fp2)
 {
-	if (fp1 < fp2)
+	if (fp1 <= fp2)
 		return (fp1);
 	return (fp2);
 }
 
 Fixed			&Fixed::max(Fixed &fp1, Fixed &fp2)
 {
-	if (fp1 > fp2)
+	if (fp1 >= fp2)
 		return (fp1);
 	return (fp2);
 }
 
 const Fixed		&Fixed::max(const Fixed &fp1, const Fixed &fp2)
 {
-	if (fp1 > fp2)
+	if (fp1 >= fp2)
 		return (fp1);
 	return (fp2);
 }
