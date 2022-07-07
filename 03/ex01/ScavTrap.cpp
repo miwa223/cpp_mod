@@ -6,7 +6,7 @@ ScavTrap::ScavTrap() : ClapTrap()
 	this->hit_points = 100;
 	this->energy_points = 50;
 	this->attack_damage = 20;
-	std::cout << "ScavTrap efault constructor: hit points " << this->hit_points
+	std::cout << "ScavTrap default constructor: hit points " << this->hit_points
 		<< "p, energy points " << this->energy_points
 		<< "p, attack damage " << this->attack_damage << "p" << std::endl;
 }
