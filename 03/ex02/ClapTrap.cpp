@@ -5,10 +5,10 @@ unsigned int	ClapTrap::max_attack_damage = 100000;
 ClapTrap::ClapTrap()
 {
 	this->name = "";
-	this->hit_points = 10;
-	this->energy_points = 10;
-	this->attack_damage = 0;
-	this->max_hit_point = this->hit_points;
+	this->hit_points = k_hp;
+	this->energy_points = k_ep;
+	this->attack_damage = k_ad;
+	this->max_hit_point = k_mhp;
 	std::cout << "ClapTrap default constructor: hit points " << this->hit_points
 		<< "p, energy points " << this->energy_points
 		<< "p, attack damage " << this->attack_damage << "p" << std::endl;
@@ -17,10 +17,10 @@ ClapTrap::ClapTrap()
 ClapTrap::ClapTrap(std::string name)
 {
 	this->name = name;
-	this->hit_points = 10;
-	this->energy_points = 10;
-	this->attack_damage = 0;
-	this->max_hit_point = this->hit_points;
+	this->hit_points = k_hp;
+	this->energy_points = k_ep;
+	this->attack_damage = k_ad;
+	this->max_hit_point = k_mhp;
 	std::cout << this->name << ": ClapTrap constructor: hit points " << this->hit_points
 		<< "p, energy points " << this->energy_points
 		<< "p, attack damage " << this->attack_damage << "p"<< std::endl;

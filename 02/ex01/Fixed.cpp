@@ -6,6 +6,7 @@ Fixed::Fixed()
 	this->fp_num = 0;
 }
 
+// Fixed::Fixed(const int num = 0)
 Fixed::Fixed(const int num)
 {
 	std::cout << "Int constructor called" << std::endl;

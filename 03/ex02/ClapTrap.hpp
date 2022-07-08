@@ -7,12 +7,16 @@
 class ClapTrap
 {
 	protected:
-		std::string			name;
-		unsigned int		hit_points;
-		unsigned int		energy_points;
-		unsigned int		attack_damage;
-		unsigned int		max_hit_point;
-		static unsigned int	max_attack_damage;
+		std::string					name;
+		unsigned int				hit_points;
+		unsigned int				energy_points;
+		unsigned int				attack_damage;
+		unsigned int				max_hit_point;
+		static unsigned int			max_attack_damage;
+		static const unsigned int	k_hp = 10;
+		static const unsigned int	k_ep = 10;
+		static const unsigned int	k_ad = 0;
+		static const unsigned int	k_mhp = 10;
 	public:
 		ClapTrap();
 		ClapTrap(std::string name);

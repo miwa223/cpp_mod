@@ -4,9 +4,10 @@ DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap()
 {
 	ClapTrap::name = "_clap_name";
 	this->name = "";
-	this->hit_points = FragTrap::hit_points;
-	this->energy_points = ScavTrap::energy_points;
-	this->attack_damage = FragTrap::attack_damage;
+	this->hit_points = k_hp;
+	this->energy_points = k_ep;
+	this->attack_damage = k_ad;
+	this->max_hit_point = k_mhp;
 	std::cout << "DiamondTrap default constructor: hit points " << this->hit_points
 		<< "p, energy points " << this->energy_points
 		<< "p, attack damage " << this->attack_damage << "p" << std::endl;
@@ -16,9 +17,10 @@ DiamondTrap::DiamondTrap(std::string name) : ScavTrap(name), FragTrap(name)
 {
 	ClapTrap::name = name + "_clap_name";
 	this->name = name;
-	this->hit_points = FragTrap::hit_points;
-	this->energy_points = ScavTrap::energy_points;
-	this->attack_damage = FragTrap::attack_damage;
+	this->hit_points = k_hp;
+	this->energy_points = k_ep;
+	this->attack_damage = k_ad;
+	this->max_hit_point = k_mhp;
 	std::cout << "DiamondTrap constructor: hit points " << this->hit_points
 		<< "p, energy points " << this->energy_points
 		<< "p, attack damage " << this->attack_damage << "p" << std::endl;

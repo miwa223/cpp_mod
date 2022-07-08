@@ -5,14 +5,19 @@
 
 class ScavTrap : public ClapTrap
 {
+	protected:
+		static const unsigned int	k_hp = 100;
+		static const unsigned int	k_ep = 50;
+		static const unsigned int	k_ad = 20;
+		static const unsigned int	k_mhp = 100;
 	public:
 		ScavTrap();
 		ScavTrap(std::string name);
 		ScavTrap(const ScavTrap &scavtrap);
 		ScavTrap &operator=(const ScavTrap &scavtrap);
 		virtual ~ScavTrap();
-		void	attack(const std::string& target);
-		void	guardGate();
+		virtual void	attack(const std::string& target);
+		void			guardGate();
 };
 
 #endif
