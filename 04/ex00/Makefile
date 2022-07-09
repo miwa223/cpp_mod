@@ -1,21 +1,22 @@
 NAME	= animal
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
-SRCS	= main.cpp Animal.cpp Dog.cpp Cat.cpp
-OBJS	= $(SRCS:%.cpp=objects/%.o)
-DEPENDS	= $(OBJS:%.o=objects/%.d)
+SRCS	= main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+OBG_DIR = objects
+OBJS	= $(SRCS:%.cpp=$(OBG_DIR)/%.o)
+DEPENDS	= $(OBJS:%.o=$(OBG_DIR)/%.d)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-objects/%.o: %.cpp
-	@if [ ! -d objects ]; then mkdir objects ; fi
+$(OBG_DIR)/%.o: %.cpp
+	@mkdir -p $(OBG_DIR)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	@if [ -d objects ]; then rm -r objects ; fi
+	@if [ -d $(OBG_DIR) ]; then rm -r $(OBG_DIR) ; fi
 
 fclean: clean
 	rm -f $(NAME)
