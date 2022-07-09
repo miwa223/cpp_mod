@@ -1,6 +1,6 @@
 NAME	= animal
 CC		= c++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP #-g -fsanitize=leak
 SRCS	= main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 OBG_DIR = objects
 OBJS	= $(SRCS:%.cpp=$(OBG_DIR)/%.o)

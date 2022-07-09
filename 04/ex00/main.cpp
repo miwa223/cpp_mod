@@ -10,8 +10,8 @@ int main()
 	const WrongAnimal* wrong = new WrongCat();
 	Cat	k;
 	Cat *n = new Cat();
-
 	k = *n;
+
 	std::cout << "-----------------------" << std::endl;
 
 	std::cout << "type: " << j->getType() << " " << std::endl;
@@ -34,5 +34,6 @@ int main()
 	delete j;
 	delete i;
 	delete wrong;
-	return 0;
+	delete n;
+	return (0);
 }
