@@ -3,7 +3,7 @@
 
 int main()
 {
-	Animal *animals[4];
+	Animal	*animals[4];
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -14,17 +14,17 @@ int main()
 		std::cout << "type: " << animals[i]->getType() << std::endl;
 	}
 	std::cout << "---------------------------" << std::endl;
-	Cat	cat_cp;
-	std::cout << "    brain_-: " << cat_cp.getBrain() << std::endl;
-	std::cout << "    ideas_-: " << cat_cp.getBrain()->ideas[0] << std::endl;
-	std::cout << "    ideas_-: " << &(cat_cp.getBrain()->ideas[0]) << std::endl;
+	Cat		copyCat;
+	std::cout << "    brain_-: " << copyCat.getBrain() << std::endl;
+	std::cout << "    ideas_-: " << copyCat.getBrain()->ideas[0] << std::endl;
+	std::cout << "    ideas_-: " << &(copyCat.getBrain()->ideas[0]) << std::endl;
 	((Cat *)animals[2])->getBrain()->ideas[0] = "I want cheese";
-	cat_cp = *(Cat *)(animals[2]);
+	copyCat = *(Cat *)(animals[2]);
 	std::cout << "---------------------------" << std::endl;
-	std::cout << "    brain_+: " << cat_cp.getBrain() << std::endl;
+	std::cout << "    brain_+: " << copyCat.getBrain() << std::endl;
 	std::cout << "    brain_animals[2]: " << ((Cat *)animals[2])->getBrain() << std::endl;
-	std::cout << "    ideas_+: " << cat_cp.getBrain()->ideas[0] << std::endl;
-	std::cout << "    ideas_+: " << &(cat_cp.getBrain()->ideas[0]) << std::endl;
+	std::cout << "    ideas_+: " << copyCat.getBrain()->ideas[0] << std::endl;
+	std::cout << "    ideas_+: " << &(copyCat.getBrain()->ideas[0]) << std::endl;
 	std::cout << "    ideas_animals[2]: " << &(((Cat *)animals[2])->getBrain()->ideas[0])
 		 << std::endl;
 	std::cout << "---------------------------" << std::endl;
