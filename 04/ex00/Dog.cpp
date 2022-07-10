@@ -23,11 +23,6 @@ Dog::~Dog()
 	std::cout << "Dog destructor" << std::endl;
 }
 
-std::string	Dog::getType() const
-{
-	return (this->type);
-}
-
 void		Dog::makeSound() const
 {
 	std::cout << "Woof woof!!" << std::endl;
