@@ -1,6 +1,6 @@
 NAME	= materia
-CC		= clang++ #
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP -g -fsanitize=leak
+CC		= c++
+CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP #-g -fsanitize=leak
 SRCS	= main.cpp Character.cpp MateriaSource.cpp \
 			AMateria.cpp Ice.cpp Cure.cpp
 OBG_DIR = objects

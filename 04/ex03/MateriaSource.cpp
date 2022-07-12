@@ -11,7 +11,8 @@ MateriaSource::MateriaSource()
 MateriaSource::MateriaSource(const MateriaSource &materia)
 {
 	std::cout << "MateriaSource copy constructor" << std::endl;
-	this->m_srcs[0] = nullptr;
+	for (int i = 0; i < 4; i++)
+		this->m_srcs[i] = nullptr;
 	*this = materia;
 }
 
@@ -23,7 +24,10 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &materia)
 	std::cout << "MateriaSource copy assignment operator" << std::endl;
 
 	for (int i = 0; i < 4 && this->m_srcs[i]; i++)
+	{
 		delete this->m_srcs[i];
+		this->m_srcs[i] = nullptr;
+	}
 	for (int i = 0; i < 4 && materia.m_srcs[i]; i++)
 		this->m_srcs[i] = materia.m_srcs[i]->clone();
 	return (*this);
@@ -32,8 +36,8 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &materia)
 MateriaSource::~MateriaSource()
 {
 	std::cout << "MateriaSource destructor" << std::endl;
-	for (int i = 0; i < 4 && m_srcs[i]; i++)
-		delete m_srcs[i];
+	for (int i = 0; i < 4 && this->m_srcs[i]; i++)
+		delete this->m_srcs[i];
 }
 
 void		MateriaSource::learnMateria(AMateria* m)
