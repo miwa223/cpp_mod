@@ -10,7 +10,7 @@ Dog::Dog() : Animal()
 Dog::Dog(const Dog &dog) : Animal(dog)
 {
 	std::cout << "Dog copy constructor" << std::endl;
-	this->brain = NULL;
+	this->brain = nullptr;
 	*this = dog;
 }
 
