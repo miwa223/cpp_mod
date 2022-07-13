@@ -22,10 +22,10 @@ int main()
 
 	std::cout << "-----------------------" << std::endl;
 
-	std::cout << "type: " << meta->getType() << " " << std::endl;
-	std::cout << "type: " << wrong->getType() << " " << std::endl;
+	std::cout << "Animal_type: " << meta->getType() << " " << std::endl;
+	std::cout << "WrongCat_type: " << wrong->getType() << " " << std::endl;
 	wrong->makeSound();
-	std::cout << "type: " << k.getType() << " " << std::endl;
+	std::cout << "Cat_type: " << k.getType() << " " << std::endl;
 	k.makeSound();
 
 	std::cout << "-----------------------" << std::endl;
