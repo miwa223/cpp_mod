@@ -109,7 +109,7 @@ void				Character::unequip(int idx)
 			}
 		}
 		this->materias[idx] = nullptr;
-		if (this->materia_thrown[99])
+		if (this->materia_thrown[MAX_UNEQUIP - 1])
 			this->has_space = false;
 	}
 }
