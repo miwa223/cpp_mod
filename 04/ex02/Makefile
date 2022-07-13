@@ -1,22 +1,22 @@
-NAME	= animal
-CC		= c++
-CFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP #-g -fsanitize=leak
-SRCS	= main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
-OBG_DIR = objects
-OBJS	= $(SRCS:%.cpp=$(OBG_DIR)/%.o)
-DEPENDS	= $(OBJS:%.o=$(OBG_DIR)/%.d)
+NAME		= animal
+CXX			= c++
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP #-g -fsanitize=leak
+SRCS		= main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
+OBJ_DIR 	= objects
+OBJS		= $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
+DEPENDS		= $(OBJS:$(OBJ_DIR)/%.o=$(OBJ_DIR)/%.d)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
-$(OBG_DIR)/%.o: %.cpp
-	@mkdir -p $(OBG_DIR)
-	$(CC) $(CFLAGS) -o $@ -c $<
+$(OBJ_DIR)/%.o: %.cpp
+	@mkdir -p $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 clean:
-	@if [ -d $(OBG_DIR) ]; then rm -r $(OBG_DIR) ; fi
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
