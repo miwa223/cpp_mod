@@ -3,19 +3,19 @@
 
 AMateria::AMateria()
 {
-	std::cout << "AMateria default constractor" << std::endl;
+	std::cout << "AMateria default constructor" << std::endl;
 	this->type = "";
 }
 
 AMateria::AMateria(std::string const &type)
 {
-	std::cout << "AMateria constractor" << std::endl;
+	std::cout << "AMateria constructor" << std::endl;
 	this->type = type;
 }
 
 AMateria::AMateria(const AMateria &materia)
 {
-	std::cout << "AMateria copy constractor" << std::endl;
+	std::cout << "AMateria copy constructor" << std::endl;
 	*this = materia;
 }
 
