@@ -4,6 +4,18 @@
 #include <string>
 #include <iostream>
 
+class GradeTooHighException : public std::exception
+{
+	public:
+		virtual const char*	what() const throw();
+};
+
+class GradeTooLowException : public std::exception
+{
+	public:
+		virtual const char*	what() const throw();
+};
+
 class Bureaucrat
 {
 	private:
@@ -15,13 +27,12 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat &bureaucrat);
 		Bureaucrat	&operator=(const Bureaucrat &bureaucrat);
 		~Bureaucrat();
-		void			GradeTooHighException();
-		void			GradeTooLowException();
-		std::string		getName();
-		int				getGrade();
-		void			incrementGrade(int grade);
-		void			decrementGrade(int grade);
-		// std::iostream	operator<<();
+		std::string		getName() const;
+		int				getGrade() const;
+		void			incrementGrade();
+		void			decrementGrade();
 };
+
+std::ostream	&operator<<(std::ostream& stream, const Bureaucrat &bureaucrat);
 
 #endif
