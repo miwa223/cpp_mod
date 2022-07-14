@@ -1,6 +1,6 @@
 NAME		= bureaucrat
 CXX			= c++
-CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP #-g -fsanitize=leak
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98 -MMD -MP
 SRCS		= main.cpp Bureaucrat.cpp
 OBJ_DIR 	= objects
 OBJS		= $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
