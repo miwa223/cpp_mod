@@ -1,28 +1,32 @@
 #include "Bureaucrat.hpp"
 
-const char	*GradeTooHighException::what() const throw()
+const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("grade too high");
 }
 
-const char	*GradeTooLowException::what() const throw()
+const char	*Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("grade too low");
 }
 
-Bureaucrat::Bureaucrat() : name(""), grade(150)
+Bureaucrat::Bureaucrat() : name(""), grade(LOWEST_GRADE)
 {
 	std::cout << "Bureaucrat default constructor" << std::endl;
+	if (this->grade < HIGHTEST_GRADE)
+		throw Bureaucrat::GradeTooHighException();
+	else if (this->grade > LOWEST_GRADE)
+		throw Bureaucrat::GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 {
 	std::cout << this->name << ": Bureaucrat constructor" << std::endl;
 	this->grade = grade;
-	if (grade < 1)
-		throw GradeTooHighException();
-	else if (grade > 150)
-		throw GradeTooLowException();
+	if (grade < HIGHTEST_GRADE)
+		throw Bureaucrat::GradeTooHighException();
+	else if (grade > LOWEST_GRADE)
+		throw Bureaucrat::GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat) : name(bureaucrat.name)
@@ -55,18 +59,28 @@ int				Bureaucrat::getGrade() const
 	return (this->grade);
 }
 
+int				Bureaucrat::getHighestGrade()
+{
+	return (HIGHTEST_GRADE);
+}
+
+int				Bureaucrat::getLowestGrade()
+{
+	return (LOWEST_GRADE);
+}
+
 void			Bureaucrat::incrementGrade()
 {
 	this->grade--;
-	if (this->grade == 0)
-		throw GradeTooHighException();
+	if (this->grade == HIGHTEST_GRADE - 1)
+		throw Bureaucrat::GradeTooHighException();
 }
 
 void			Bureaucrat::decrementGrade()
 {
 	this->grade++;
-	if (this->grade == 151)
-		throw GradeTooLowException();
+	if (this->grade == LOWEST_GRADE + 1)
+		throw Bureaucrat::GradeTooLowException();
 }
 
 std::ostream	&operator<<(std::ostream& stream, const Bureaucrat &bureaucrat)
