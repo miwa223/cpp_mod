@@ -10,7 +10,7 @@ const char	*GradeTooLowException::what() const throw()
 	return ("grade too low");
 }
 
-Bureaucrat::Bureaucrat() : name(""), grade(1) //
+Bureaucrat::Bureaucrat() : name(""), grade(150)
 {
 	std::cout << "Bureaucrat default constructor" << std::endl;
 }
@@ -19,17 +19,10 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 {
 	std::cout << this->name << ": Bureaucrat constructor" << std::endl;
 	this->grade = grade;
-	try
-	{
-		if (grade < 1)
-			throw GradeTooHighException();
-		else if (grade > 150)
-			throw GradeTooLowException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	if (grade < 1)
+		throw GradeTooHighException();
+	else if (grade > 150)
+		throw GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat) : name(bureaucrat.name)
@@ -65,30 +58,15 @@ int				Bureaucrat::getGrade() const
 void			Bureaucrat::incrementGrade()
 {
 	this->grade--;
-	try
-	{
-		if (this->grade == 0)
-			throw GradeTooHighException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	if (this->grade == 0)
+		throw GradeTooHighException();
 }
 
 void			Bureaucrat::decrementGrade()
 {
 	this->grade++;
-	try
-	{
-		if (this->grade == 151)
-			throw GradeTooLowException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
+	if (this->grade == 151)
+		throw GradeTooLowException();
 }
 
 std::ostream	&operator<<(std::ostream& stream, const Bureaucrat &bureaucrat)
