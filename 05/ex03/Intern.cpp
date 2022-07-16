@@ -13,6 +13,7 @@ Intern::Intern(const Intern &intern)
 
 Intern &Intern::operator=(const Intern &intern)
 {
+	(void)intern;
 	return (*this);
 }
 
@@ -33,6 +34,6 @@ Form	*Intern::makeForm(std::string formname, std::string target)
 			return (forms[i]->makeSpecificForm(target));
 		}
 	}
-	std::cerr << "Intern: Specified form doesn't exist." << std::endl;
+	std::cerr << "Intern couldn't make the form that didn't exist." << std::endl;
 	return (NULL);
 }
