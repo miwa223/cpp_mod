@@ -8,12 +8,12 @@ void	test_signExecShrubberyForm()
 	std::cout << "\n* test_signExecShrubberyForm *" << std::endl;
 	try
 	{
-		int	grade;
-		ShrubberyCreationForm shrubbery("home");
+		int						grade;
+		ShrubberyCreationForm	shrubbery("home");
 		std::cout << shrubbery;
 		std::cout << ">> Type the grade: ";
 		std::cin >> grade;
-		Bureaucrat	A("A", grade);
+		Bureaucrat				A("A", grade);
 
 		std::cout << A;
 		shrubbery.beSigned(A);
@@ -31,12 +31,12 @@ void	test_signExecRobotomyForm()
 	std::cout << "\n* test_signExecRobotomyForm *" << std::endl;
 	try
 	{
-		int	grade;
+		int					grade;
 		RobotomyRequestForm	robot("housing construction");
 		std::cout << robot;
 		std::cout << ">> Type the grade: ";
 		std::cin >> grade;
-		Bureaucrat	B("B", grade);
+		Bureaucrat			B("B", grade);
 
 		std::cout << B;
 		robot.beSigned(B);
@@ -54,12 +54,12 @@ void	test_signExecPresidentialForm()
 	std::cout << "\n* test_signExecPresidentialForm *" << std::endl;
 	try
 	{
-		int	grade;
-		PresidentialPardonForm	president;
+		int						grade;
+		PresidentialPardonForm	president("PersonX");
 		std::cout << president;
 		std::cout << ">> Type the grade: ";
 		std::cin >> grade;
-		Bureaucrat	C("C", grade);
+		Bureaucrat				C("C", grade);
 
 		std::cout << C;
 		president.beSigned(C);
