@@ -16,8 +16,7 @@ const char	*Form::NotSignedException::what() const throw()
 	return ("Form: signature required");
 }
 
-Form::Form()
-	: name(""), is_signed(false), grade_for_sign(100), grade_for_exec(50)
+void		Form::assertion() const
 {
 	if (grade_for_sign < Bureaucrat::getHighestGrade()
 		|| grade_for_sign < Bureaucrat::getHighestGrade())
@@ -25,21 +24,22 @@ Form::Form()
 	else if (grade_for_sign > Bureaucrat::getLowestGrade()
 		|| grade_for_exec > Bureaucrat::getLowestGrade())
 		throw Form::GradeTooLowException();
+}
+
+Form::Form()
+	: name(""), is_signed(false), grade_for_sign(100), grade_for_exec(50)
+{
+	assertion();
 }
 
 Form::Form(std::string name, int grade_for_sign, int grade_for_exec)
 	: name(name), is_signed(false), grade_for_sign(grade_for_sign), grade_for_exec(grade_for_exec)
 {
-	if (grade_for_sign < Bureaucrat::getHighestGrade()
-		|| grade_for_sign < Bureaucrat::getHighestGrade())
-		throw Form::GradeTooHighException();
-	else if (grade_for_sign > Bureaucrat::getLowestGrade()
-		|| grade_for_exec > Bureaucrat::getLowestGrade())
-		throw Form::GradeTooLowException();
+	assertion();
 }
 
 Form::Form(const Form &form)
-	: name(form.name), grade_for_sign(100), grade_for_exec(50)
+	: name(form.name), grade_for_sign(form.grade_for_sign), grade_for_exec(form.grade_for_exec)
 {
 	*this = form;
 }

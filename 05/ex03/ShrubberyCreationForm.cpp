@@ -44,19 +44,19 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	writing_file.open(filename);
 	for (int i = 0; i < 2; i++)
 	{
-		writing_file << "			   \\/ |    |/"      << std::endl
-					 << "		  \\/ / \\||/  /_/___/_" << std::endl
-					 << "		  \\/   |/ \\/"          << std::endl
-					 << "	 _\\__\\_\\   |  /_____/_"   << std::endl
-					 << "	       \\  | /          /"   << std::endl
-					 << "	__ _-----`  |{,-----------~" << std::endl
-					 << "			   \\ }{"            << std::endl
-					 << "				}{{"             << std::endl
-					 << "				}}{"             << std::endl
-					 << "				{{}"             << std::endl
-					 << "		, -=-~{ .-^- _"          << std::endl
-					 << "	ejm        `}"               << std::endl
-					 << "				{"               << std::endl
+		writing_file << "              \\/ |    |/"      << std::endl
+					 << "         \\/ / \\||/  /_/___/_" << std::endl
+					 << "         \\/   |/ \\/"          << std::endl
+					 << "    _\\__\\_\\   |  /_____/_"   << std::endl
+					 << "          \\  | /          /"   << std::endl
+					 << "   __ _-----`  |{,-----------~" << std::endl
+					 << "              \\ }{"            << std::endl
+					 << "               }{{"             << std::endl
+					 << "               }}{"             << std::endl
+					 << "               {{}"             << std::endl
+					 << "       , -=-~{ .-^- _"          << std::endl
+					 << "   ejm        `}"               << std::endl
+					 << "               {"               << std::endl
 					 << std::endl;
 	}
 	writing_file.close();

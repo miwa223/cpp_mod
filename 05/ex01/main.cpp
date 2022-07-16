@@ -48,5 +48,23 @@ int	main()
 			std::cerr << e.what() << '\n';
 		}
 	}
+	{
+		std::cout << "\n* TEST 4: fail to sign the form, need a higher grade *" << std::endl;
+		try
+		{
+			Bureaucrat	B("B", 99);
+			Bureaucrat	D("D", 150);
+			Form		formB("formB", 100, 50);
+
+			std::cout << B;
+			formB.beSigned(B);
+			std::cout << formB;
+			D.signForm(formB);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+	}
 	return (0);
 }

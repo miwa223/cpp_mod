@@ -87,6 +87,8 @@ void	test_ng_inConstructor()
 
 int	main()
 {
+	std::srand((unsigned)std::time(NULL));
+
 	test_signExecShrubberyForm();
 	test_signExecRobotomyForm();
 	test_signExecPresidentialForm();

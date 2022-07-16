@@ -41,5 +41,21 @@ int	main()
 			std::cerr << e.what() << '\n';
 		}
 	}
+	{
+		std::cout << "\n* TEST 4: success *" << std::endl;
+		try
+		{
+			Bureaucrat	D("D", 100);
+
+			D.incrementGrade();
+			std::cout << D;
+			D.decrementGrade();
+			std::cout << D;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+	}
 	return (0);
 }

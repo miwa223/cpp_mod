@@ -12,7 +12,6 @@ class Bureaucrat
 			public:
 				virtual const char*	what() const throw();
 		};
-
 		class GradeTooLowException : public std::exception
 		{
 			public:
@@ -21,12 +20,11 @@ class Bureaucrat
 
 		const std::string	name;
 		int					grade;
-		static const int	HIGHTEST_GRADE = 1;
+		static const int	HIGHEST_GRADE = 1;
 		static const int	LOWEST_GRADE = 150;
 
 	public:
-		Bureaucrat();
-		Bureaucrat(std::string name, int grade);
+		Bureaucrat(std::string name = "", int grade = 150);
 		Bureaucrat(const Bureaucrat &bureaucrat);
 		Bureaucrat	&operator=(const Bureaucrat &bureaucrat);
 		~Bureaucrat();

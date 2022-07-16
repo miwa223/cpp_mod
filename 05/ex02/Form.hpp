@@ -45,6 +45,7 @@ class Form
 		int				getGradeForExec() const;
 		void			beSigned(const Bureaucrat &bureaucrat);
 		virtual void	execute(Bureaucrat const &executor) const = 0;
+		void			assertion() const;
 };
 
 std::ostream	&operator<<(std::ostream& stream, const Form &form);
