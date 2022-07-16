@@ -9,18 +9,16 @@ void	test_signExecShrubberyForm()
 	try
 	{
 		int	grade;
-
-		Form *formA = new ShrubberyCreationForm("home");
-		std::cout << *formA;
+		ShrubberyCreationForm shrubbery("home");
+		std::cout << shrubbery;
 		std::cout << ">> Type the grade: ";
 		std::cin >> grade;
 		Bureaucrat	A("A", grade);
 
 		std::cout << A;
-		formA->beSigned(A);
-		A.signForm(*formA);
-		A.executeForm(*formA);
-		delete formA;
+		shrubbery.beSigned(A);
+		A.signForm(shrubbery);
+		A.executeForm(shrubbery);
 	}
 	catch(const std::exception& e)
 	{
@@ -34,18 +32,16 @@ void	test_signExecRobotomyForm()
 	try
 	{
 		int	grade;
-		Form *formB = new RobotomyRequestForm("housing construction");
-		std::cout << *formB;
+		RobotomyRequestForm	robot("housing construction");
+		std::cout << robot;
 		std::cout << ">> Type the grade: ";
 		std::cin >> grade;
 		Bureaucrat	B("B", grade);
 
 		std::cout << B;
-		formB->beSigned(B);
-		B.signForm(*formB);
-		B.executeForm(*formB);
-		std::cout << *formB;
-		delete formB;
+		robot.beSigned(B);
+		B.signForm(robot);
+		B.executeForm(robot);
 	}
 	catch(const std::exception& e)
 	{
@@ -59,17 +55,16 @@ void	test_signExecPresidentialForm()
 	try
 	{
 		int	grade;
-		Form *formC = new PresidentialPardonForm("PersonX");
-		std::cout << *formC;
+		PresidentialPardonForm	president;
+		std::cout << president;
 		std::cout << ">> Type the grade: ";
 		std::cin >> grade;
 		Bureaucrat	C("C", grade);
 
 		std::cout << C;
-		formC->beSigned(C);
-		C.signForm(*formC);
-		C.executeForm(*formC);
-		delete formC;
+		president.beSigned(C);
+		C.signForm(president);
+		C.executeForm(president);
 	}
 	catch(const std::exception& e)
 	{
@@ -96,5 +91,6 @@ int	main()
 	test_signExecRobotomyForm();
 	test_signExecPresidentialForm();
 	// test_ng_inConstructor();
+	// system("leaks -q bureaucrat");
 	return (0);
 }
