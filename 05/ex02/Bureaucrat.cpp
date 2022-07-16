@@ -3,12 +3,12 @@
 
 const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Bureaucrat: grade too high");
+	return ("grade too high");
 }
 
 const char	*Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Bureaucrat: grade too low");
+	return ("grade too low");
 }
 
 Bureaucrat::Bureaucrat() : name(""), grade(LOWEST_GRADE)
@@ -96,9 +96,8 @@ void			Bureaucrat::executeForm(Form const &form)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n'; //
 		std::cout << this->name << " couldn't execute "
-			<< form.getName() << " because of the low grade." << std::endl;
+			<< form.getName() << " because " << e.what() << "." << std::endl;
 	}
 }
 

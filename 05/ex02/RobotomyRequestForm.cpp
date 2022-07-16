@@ -4,19 +4,19 @@
 #include "Bureaucrat.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm()
-	: Form("RobotomyRequestForm", 72, 45)
+	: Form("robotomy request", 72, 45)
 {
 	this->target = "";
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
-	: Form("RobotomyRequestForm", 72, 45)
+	: Form("robotomy request", 72, 45)
 {
 	this->target = target;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &robot)
-	: Form("RobotomyRequestForm", 72, 45)
+	: Form("robotomy request", 72, 45)
 {
 	*this = robot;
 }

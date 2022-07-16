@@ -3,20 +3,20 @@
 #include "Bureaucrat.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-	: Form("ShrubberyCreationForm", 145, 137)
+	: Form("shrubberry creation", 145, 137)
 {
 	this->target = "";
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
-	: Form("ShrubberyCreationForm", 145, 137)
+	: Form("shrubberry creation", 145, 137)
 {
 	this->target = target;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(
 	const ShrubberyCreationForm &shrubbery)
-	: Form("ShrubberyCreationForm", 145, 137)
+	: Form("shrubberry creation", 145, 137)
 {
 	*this = shrubbery;
 }
