@@ -4,8 +4,8 @@
 template<class T> class Array
 {
 	private:
-		T				*array;
 		unsigned int	n;
+		T				*array;
 
 	public:
 		Array(unsigned int n = 0);
