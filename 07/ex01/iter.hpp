@@ -13,11 +13,16 @@ void	iter(T *array, S len, R (*func)(T &))
 	}
 }
 
+template <class T> T	func_template(T &ele)
+{
+	ele++;
+	return (ele);
+}
+
 void	test_string();
 void	test_double();
 void	test_instantiated_function_template();
 void	func_string(std::string &ele);
 int		func_double(double &ele);
-template <class T> T	func_template(T &ele);
 
 #endif

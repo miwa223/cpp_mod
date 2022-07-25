@@ -69,9 +69,3 @@ int		func_double(double &ele)
 	ele += 0.1;
 	return (0);
 }
-
-template <class T> T	func_template(T &ele)
-{
-	ele++;
-	return (ele);
-}
