@@ -35,7 +35,7 @@ template<class T> Array<T>::~Array()
 template<class T> T				&Array<T>::operator[](unsigned int i)
 {
 	if (i >= this->n)
-		throw std::exception();
+		throw std::out_of_range("Error: index is out of bounds");
 	return (this->array[i]);
 }
 
