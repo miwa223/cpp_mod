@@ -15,7 +15,7 @@ template<class T> class Array
 		Array &operator=(const Array &other);
 		~Array();
 
-		T &operator[](unsigned int i);
+		T &operator[](unsigned int i) const;
 		unsigned int	size() const;
 };
 

@@ -32,7 +32,7 @@ template<class T> Array<T>::~Array()
 	delete [] this->array;
 }
 
-template<class T> T				&Array<T>::operator[](unsigned int i)
+template<class T> T				&Array<T>::operator[](unsigned int i) const
 {
 	if (i >= this->n)
 		throw std::out_of_range("Error: index is out of bounds");
