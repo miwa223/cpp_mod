@@ -4,25 +4,20 @@
 #include <string>
 #include <iostream>
 
-template <class T, class S, class R>
-void	iter(T *array, S len, R (*func)(T &))
+template <class T>
+void	iter(T *array, size_t len, void (*func)(T const &))
 {
-	for (S i = 0; i < len; i++)
+	for (size_t i = 0; i < len; i++)
 	{
 		func(array[i]);
 	}
 }
 
-template <class T> T	func_template(T &ele)
+template <class T> void	func_template(T const &ele)
 {
-	ele++;
-	return (ele);
+	std::cout << ele << " ";
 }
 
-void	test_string();
-void	test_double();
-void	test_instantiated_function_template();
-void	func_string(std::string &ele);
-int		func_double(double &ele);
+void	func_string(std::string const &ele);
 
 #endif
