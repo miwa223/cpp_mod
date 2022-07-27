@@ -16,6 +16,7 @@ int		main()
 	iter(i_array, ilen, func_template<int>);
 	std::cout << std::endl;
 	iter(d_array, dlen, func_template<double>);
+	std::cout << std::endl;
 	return (0);
 }
 
