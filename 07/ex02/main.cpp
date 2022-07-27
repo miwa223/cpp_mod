@@ -3,25 +3,6 @@
 
 #define MAX_VAL 750
 
-void	test_default_constructor()
-{
-	Array<int> a;
-	try
-	{
-		std::cout << "test_default_constructor: " << a[0] << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-}
-
-void	test_size()
-{
-	Array<int> b(3);
-	std::cout << "test_size: " << b.size() << std::endl;
-}
-
 int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);
@@ -67,10 +48,51 @@ int main(int, char**)
         numbers[i] = rand();
     }
     delete [] mirror;
-
 	/*
 	test_default_constructor();
-	test_size();
+	test_complex_type();
 	*/
     return 0;
+}
+
+void	test_default_constructor()
+{
+	Array<int> a;
+	try
+	{
+		std::cout << "test_default_constructor: " << a[0] << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
+
+void	test_complex_type()
+{
+	Array<Sample> A(5);
+
+	for (size_t i = 0; i < A.size(); i++)
+	{
+		A[i].set_num(i + 1);
+	}
+	for (size_t i = 0; i < A.size(); i++)
+	{
+		std::cout << A[i].get_num();
+	}
+	std::cout << std::endl;
+}
+
+Sample::Sample(size_t n) : num(n) {}
+
+Sample::~Sample() {}
+
+size_t Sample::get_num() const
+{
+	return (this->num);
+}
+
+void Sample::set_num(size_t num)
+{
+	this->num = num;
 }
