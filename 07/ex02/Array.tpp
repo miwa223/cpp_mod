@@ -4,7 +4,7 @@ template<class T> Array<T>::Array(unsigned int n)
 {
 	this->n = n;
 	if (n > 0)
-		this->array = new T[n];
+		this->array = new T[n]();
 	else
 		this->array = NULL;
 }
@@ -20,8 +20,9 @@ template<class T> Array<T> &Array<T>::operator=(const Array<T> &other)
 	if (this == &other)
 		return (*this);
 	this->n = other.n;
+	T *tmp = new T[other.n]();
 	delete [] this->array;
-	this->array = new T[other.n];
+	this->array = tmp;
 	for (size_t i = 0; i < other.n; i++)
 		this->array[i] = other.array[i];
 	return (*this);

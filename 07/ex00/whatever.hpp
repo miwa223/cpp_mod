@@ -11,14 +11,14 @@ template <class T> void swap(T &x, T &y)
 	y = tmp;
 }
 
-template <class T> T &min(T &x, T &y)
+template <class T> T const &min(T const &x, T const &y)
 {
 	if (x < y)
 		return (x);
 	return (y);
 }
 
-template <class T> T &max(T &x, T &y)
+template <class T> T const &max(T const &x, T const &y)
 {
 	if (x > y)
 		return (x);

@@ -3,6 +3,20 @@
 
 #define MAX_VAL 750
 
+class Sample
+{
+	public:
+		Sample(size_t n = 0);
+		~Sample();
+		size_t	get_num() const;
+		void	set_num(size_t num);
+	private:
+		size_t	num;
+};
+
+void	test_default_constructor();
+void	test_complex_type();
+
 int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);

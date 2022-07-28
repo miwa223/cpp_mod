@@ -1,5 +1,15 @@
 #include "iter.hpp"
 
+template <class T> void	func_template(T const &ele)
+{
+	std::cout << ele << " ";
+}
+
+void	func_string(std::string const &ele)
+{
+	std::cout << ele << " ";
+}
+
 int		main()
 {
 	std::string	s_array[3] = {"a", "b", "c"};
@@ -18,9 +28,4 @@ int		main()
 	iter(d_array, dlen, func_template<double>);
 	std::cout << std::endl;
 	return (0);
-}
-
-void	func_string(std::string const &ele)
-{
-	std::cout << ele << " ";
 }

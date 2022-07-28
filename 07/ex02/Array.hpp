@@ -19,18 +19,4 @@ template<class T> class Array
 		unsigned int	size() const;
 };
 
-class Sample
-{
-	public:
-		Sample(size_t n = 0);
-		~Sample();
-		size_t	get_num() const;
-		void	set_num(size_t num);
-	private:
-		size_t	num;
-};
-
-void	test_default_constructor();
-void	test_complex_type();
-
 #endif

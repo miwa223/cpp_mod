@@ -5,7 +5,7 @@
 #include <iostream>
 
 template <class T>
-void	iter(T *array, size_t len, void (*func)(T const &))
+void	iter(T *array, size_t len, void (*func)(T &))
 {
 	for (size_t i = 0; i < len; i++)
 	{
@@ -13,11 +13,13 @@ void	iter(T *array, size_t len, void (*func)(T const &))
 	}
 }
 
-template <class T> void	func_template(T const &ele)
+template <class T>
+void	iter(T const *array, size_t len, void (*func)(T const &))
 {
-	std::cout << ele << " ";
+	for (size_t i = 0; i < len; i++)
+	{
+		func(array[i]);
+	}
 }
-
-void	func_string(std::string const &ele);
 
 #endif
