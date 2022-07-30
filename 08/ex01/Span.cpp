@@ -24,13 +24,13 @@ void	Span::addNumber(int n)
 	nums.push_back(n);
 }
 
-void	Span::addManyNumbers(int *arr, size_t cnt)
+void	Span::addManyNumbers(const int *arr, size_t cnt)
 {
 	assertion(ADD_MANY, cnt);
 	this->nums.insert(this->nums.begin() + this->nums.size(), arr, arr + cnt);
 }
 
-void	Span::addManyNumbers(std::vector<int> vec)
+void	Span::addManyNumbers(const std::vector<int> &vec)
 {
 	assertion(ADD_MANY, vec.size());
 	this->nums.insert(this->nums.begin() + this->nums.size(), vec.begin(), vec.end());

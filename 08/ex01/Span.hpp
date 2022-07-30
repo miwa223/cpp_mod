@@ -28,8 +28,8 @@ class Span
 		~Span();
 
 		void	addNumber(int n);
-		void	addManyNumbers(int *arr, size_t cnt);
-		void	addManyNumbers(std::vector<int> vec);
+		void	addManyNumbers(const int *arr, size_t cnt);
+		void	addManyNumbers(const std::vector<int> &vec);
 		size_t	shortestSpan();
 		size_t	longestSpan();
 };
